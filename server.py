@@ -1,4 +1,4 @@
-"""Higgsfield AI MCP Server - HTTP entry point for Prefect Horizon deployment"""
+"""Higgsfield AI MCP Server - HTTP entry point for remote deployment"""
 import os
 import sys
 from pathlib import Path
@@ -11,5 +11,6 @@ load_dotenv()
 from higgsfield_mcp.server import mcp
 
 if __name__ == "__main__":
-      port = int(os.environ.get("PORT", 8000))
-      mcp.run(transport="streamable-http", host="0.0.0.0", port=port, path="/mcp")
+          port = int(os.environ.get("PORT", 8000))
+          mcp.run(transport="sse", host="0.0.0.0", port=port)
+      
